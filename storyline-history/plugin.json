@@ -1,0 +1,9 @@
+{
+    "id": "storyline-history",
+    "name": "Storyline History",
+    "version": "0.0.1",
+    "description": "View past storylines from the Storylines screen. Adds a Storyline History button that shows all completed storylines with workers, dates, and details.",
+    "author": "matthewrobinsondev",
+    "main": "index.js",
+    "permissions": ["events", "database"]
+}

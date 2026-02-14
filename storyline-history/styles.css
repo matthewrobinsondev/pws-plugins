@@ -1,0 +1,210 @@
+#storylineHistoryModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#storylineHistoryModal.shOpen {
+    display: flex;
+}
+
+/* Modal container */
+#storylineHistoryModal .shModalContent {
+    background: var(--background-1, #1a1a2e);
+    border: 1px solid var(--border-colour, #333);
+    border-radius: 8px;
+    width: 80vw;
+    max-width: 900px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header */
+#storylineHistoryModal .shHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-colour, #333);
+}
+
+#storylineHistoryModal .shHeader h2 {
+    margin: 0;
+    font-size: 1.3em;
+}
+
+#storylineHistoryModal .shCloseBtn {
+    cursor: pointer;
+    font-size: 1.5em;
+    opacity: 0.7;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+#storylineHistoryModal .shCloseBtn:hover {
+    opacity: 1;
+    background: var(--background-2, #222);
+}
+
+/* Search */
+#storylineHistoryModal .shSearchBar {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-colour, #333);
+}
+
+#storylineHistoryModal .shSearchInput {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-colour, #333);
+    border-radius: 4px;
+    background: var(--background-2, #222);
+    color: var(--text-colour, #eee);
+    font-size: 0.95em;
+    box-sizing: border-box;
+}
+
+#storylineHistoryModal .shSearchInput::placeholder {
+    color: var(--text-colour, #888);
+    opacity: 0.5;
+}
+
+/* Body */
+#storylineHistoryModal .shBody {
+    overflow-y: auto;
+    padding: 12px 20px;
+    flex: 1;
+}
+
+/* Storyline cards */
+#storylineHistoryModal .shStorylineCard {
+    background: var(--background-2, #222);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-colour, #333);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#storylineHistoryModal .shStorylineCard:hover {
+    border-color: var(--accent-colour, #555);
+}
+
+#storylineHistoryModal .shCardBody {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Score badge */
+#storylineHistoryModal .shCardScore {
+    flex-shrink: 0;
+    text-align: center;
+    min-width: 64px;
+}
+
+#storylineHistoryModal .shScoreValue {
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+#storylineHistoryModal .shScoreValue.shScoreGood {
+    color: #4caf50;
+}
+
+#storylineHistoryModal .shScoreValue.shScoreOk {
+    color: #ff9800;
+}
+
+#storylineHistoryModal .shScoreValue.shScorePoor {
+    color: #f44336;
+}
+
+#storylineHistoryModal .shScoreLabel {
+    font-size: 0.7em;
+    opacity: 0.5;
+    margin-top: 2px;
+}
+
+/* Card content */
+#storylineHistoryModal .shCardTitle {
+    font-weight: bold;
+    font-size: 1.05em;
+    margin-bottom: 6px;
+}
+
+#storylineHistoryModal .shCardMeta {
+    font-size: 0.85em;
+    opacity: 0.7;
+    margin-bottom: 6px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+#storylineHistoryModal .shCardWorkers {
+    font-size: 0.9em;
+    opacity: 0.85;
+}
+
+#storylineHistoryModal .shCardOverview {
+    font-size: 0.88em;
+    opacity: 0.7;
+    margin-top: 6px;
+    font-style: italic;
+}
+
+/* Footer / pagination */
+#storylineHistoryModal .shFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-colour, #333);
+    font-size: 0.85em;
+}
+
+#storylineHistoryModal .shPageBtn {
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 4px;
+    background: var(--background-2, #222);
+    border: 1px solid var(--border-colour, #333);
+}
+
+#storylineHistoryModal .shPageBtn:hover {
+    background: var(--accent-colour, #444);
+}
+
+#storylineHistoryModal .shPageBtn.shDisabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* States */
+#storylineHistoryModal .shNoResults {
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0.5;
+    font-size: 0.95em;
+}
+
+#storylineHistoryModal .shLoading {
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0.5;
+}
+
+#shHistoryBtn {
+    cursor: pointer;
+}
