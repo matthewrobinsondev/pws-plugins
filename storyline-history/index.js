@@ -25,12 +25,12 @@ function loadFile(filename) {
 
 function getPromotionId() {
     let state = api.game.getState();
-    if (state && state?.promotionId) {
+    if (state?.promotionId) {
         return state.promotionId;
     }
 
     let saveRow = api.database.get('SELECT saveUserPromotion FROM saveinfo LIMIT 1');
-    if (saveRow && saveRow.saveUserPromotion) {
+    if (saveRow?.saveUserPromotion) {
         return saveRow.saveUserPromotion;
     }
 
@@ -173,8 +173,8 @@ function handleGetHistory(event, data) {
     if (!promotionId) return { error: 'No save loaded' };
 
     try {
-        let searchTerm = (data && data.search) ? data.search.trim() : '';
-        let page = (data && data.page) ? data.page : 0;
+        let searchTerm = (data?.search) ? data.search.trim() : '';
+        let page = (data?.page) ? data.page : 0;
 
         let params = [promotionId];
         let searchClause = buildSearchClause(searchTerm, params);

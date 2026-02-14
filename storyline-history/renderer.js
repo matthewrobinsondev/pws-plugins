@@ -46,9 +46,9 @@
     }
 
     // --- Card rendering ---
-
+    // Surely a better way to do this
     function renderCard(storyline) {
-        let duration = storyline.durationDays !== null ? storyline.durationDays + ' days' : '';
+        let duration = storyline?.durationDays ? storyline.durationDays + ' days' : '';
         let html = '<div class="shStorylineCard">';
 
         // Card body
