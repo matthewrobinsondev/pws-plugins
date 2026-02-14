@@ -20,14 +20,9 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install ESLint
-        run: npm install -g eslint
-
       - name: Validate JavaScript
         run: |
           find . -name "*.js" -not -path "./.git/*" -not -path "./node_modules/*" | while read file; do
             echo "Checking: $file"
             node --check "$file" || exit 1
           done
-
-          eslint . --no-eslintrc --rule 'no-unused-vars:warn' --rule 'no-undef:error' --rule 'no-unreachable:error' --ignore-pattern '.git/' --ignore-pattern 'node_modules/' || true
