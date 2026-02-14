@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-release:
+    name: Build Release Zip
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Release Zip
+        run: |
+          mkdir -p dist
+          zip -r dist/pws-plugins.zip . -x '.git/*' -x 'dist/*' -x '.github/*'
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pws-plugins
+          path: dist/pws-plugins.zip
+          retention-days: 90
+
+      - name: Get next version
+        id: get_version
+        run: |
+          LATEST_TAG=$(gh release list --limit 1 --json tagName --jq '.[0].tagName' 2>/dev/null || echo "v0")
+          LATEST_NUM=$(echo "$LATEST_TAG" | grep -oE '[0-9]+$' || echo "0")
+          NEXT_NUM=$((LATEST_NUM + 1))
+          echo "version=$NEXT_NUM" >> $GITHUB_OUTPUT
+          echo "Next version: v$NEXT_NUM (was $LATEST_TAG)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: Release v${{ steps.get_version.outputs.version }}
+          draft: false
+          prerelease: false
+          files: dist/pws-plugins.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
